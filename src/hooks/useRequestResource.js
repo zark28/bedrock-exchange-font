@@ -1,48 +1,45 @@
 import React, { useCallback, useState } from 'react';
 import axios from 'axios';
 const useRequestResource = ({ endpoint, body, blogId }) => {
+  const URI = process.env.CLIENT_URI;
   const [resources, setResources] = useState([]);
   const getResources = useCallback(() => {
     axios
-      .get(`https://bedrock-exchange-blog.herokuapp.com/${endpoint}`)
+
+      .get(`${URI}/${endpoint}`)
       .then((res) => {
         const data = res.data;
         setResources(data);
       })
       .catch((err) => console.error(err));
-  }, [endpoint]);
+  }, [URI, endpoint]);
 
   const addResource = useCallback(() => {
     axios
-      .post(`https://bedrock-exchange-blog.herokuapp.com/${endpoint}`, {
+      .post(`${URI}/${endpoint}`, {
         ...body,
       })
       .then((res) => {})
       .catch((err) => console.error(err));
-  }, [endpoint, body]);
+  }, [endpoint, body, URI]);
 
   const updateResource = useCallback(() => {
     axios
-      .patch(
-        `https://bedrock-exchange-blog.herokuapp.com/${endpoint}/${blogId}`,
-        { ...body }
-      )
+      .patch(`${URI}/${endpoint}/${blogId}`, { ...body })
       .then((res) => {
         console.log(res);
       })
       .catch((err) => console.error(err));
-  }, [endpoint, blogId, body]);
+  }, [endpoint, blogId, URI, body]);
 
   const deleteResource = useCallback(() => {
     axios
-      .delete(
-        `https://bedrock-exchange-blog.herokuapp.com/${endpoint}/${blogId}`
-      )
+      .delete(`${URI}/${endpoint}/${blogId}`)
       .then((res) => {
         console.log(res);
       })
       .catch((err) => console.error(err));
-  }, [endpoint, blogId]);
+  }, [endpoint, URI, blogId]);
 
   return {
     resources,

@@ -13,7 +13,6 @@ const Layout = ({ title, children }) => {
 
   const handleScroll = () => {
     let scrollY = window.pageYOffset;
-    console.log(scrollY);
     if (scrollY > 800) {
       setScrollDown(true);
     } else if (scrollY < 800) {
