@@ -18,14 +18,14 @@ const fetchQuery = async ({ uri, method = 'GET', body = null }) => {
 };
 
 const LoginCard = () => {
-  const URI = process.env.CLIENT_URI;
+  const URI = 'https://bedrock-exchange-blog.herokuapp.com';
   const [haveAcc, setHaveAcc] = useState(true);
   const [inputType, setInputType] = useState('password');
 
   const initValue = { email: '', password: '' };
   const [user, setUser] = useState(initValue);
   const navigate = useNavigate();
-  const { logged, setLogged } = useContext(LoginContext);
+  const { setLogged } = useContext(LoginContext);
 
   // password visibility
   const handleShowPassword = (e) => {

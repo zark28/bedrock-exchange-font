@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import TakeAction from './TakeAction';
 import { FiMail, FiPhoneCall } from 'react-icons/fi';
 const Footer = () => {
+  const handleWindow = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <Wrapper className=" bg-primaryColor flex flex-col w-full items-center justify-center mt-20">
       <TakeAction />
@@ -30,7 +33,7 @@ const Footer = () => {
             </p>
           </div>
         </span>
-        <Link to="/contact">
+        <Link to="/contact" onClick={handleWindow}>
           <button
             className="text-2xl font-bold py-2 px-3 rounded-lg transition-all duration-75 bg-primaryColor-white text-primaryColor
        hover:text-textColor"

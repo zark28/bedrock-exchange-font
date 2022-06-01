@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import axios from 'axios';
 const useRequestResource = ({ endpoint, body, blogId }) => {
-  const URI = process.env.CLIENT_URI;
+  const URI = 'https://bedrock-exchange-blog.herokuapp.com';
   const [resources, setResources] = useState([]);
   const getResources = useCallback(() => {
     axios
