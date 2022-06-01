@@ -18,6 +18,7 @@ const fetchQuery = async ({ uri, method = 'GET', body = null }) => {
 };
 
 const LoginCard = () => {
+  const URI = process.env.CLIENT_URI;
   const [haveAcc, setHaveAcc] = useState(true);
   const [inputType, setInputType] = useState('password');
 
@@ -47,7 +48,7 @@ const LoginCard = () => {
     if (haveAcc)
       if (user.email && user.password) {
         const data = await fetchQuery({
-          uri: 'http://localhost:4000/auth/login',
+          uri: `${URI}/auth/login`,
           method: 'POST',
           body: user,
         });
@@ -68,7 +69,7 @@ const LoginCard = () => {
     if (!haveAcc)
       if (user.email && user.password) {
         await fetchQuery({
-          uri: 'http://localhost:4000/auth/register',
+          uri: `${URI}/auth/register`,
           method: 'POST',
           body: user,
         });
