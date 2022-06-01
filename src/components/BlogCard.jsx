@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const BlogCard = ({ blog, img }) => {
   return (
-    <Link to={`/blog/${blog.title}`}>
+    <Link to={`/blog/${blog._id}`}>
       <div className="flex w-full h-fit flex-col items-center justify-center gap-5 text-secondaryColor ">
         <img
           className="w-full h-80 object-contain object-center"

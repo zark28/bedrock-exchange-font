@@ -3,6 +3,7 @@ import axios from 'axios';
 const useRequestResource = ({ endpoint, body, blogId }) => {
   const URI = 'https://bedrock-exchange-blog.herokuapp.com';
   const [resources, setResources] = useState([]);
+  const [resource, setResource] = useState([]);
   const getResources = useCallback(() => {
     axios
 
@@ -13,6 +14,17 @@ const useRequestResource = ({ endpoint, body, blogId }) => {
       })
       .catch((err) => console.error(err));
   }, [URI, endpoint]);
+  const getOneResource = useCallback(() => {
+    axios
+      .get(`${URI}/${endpoint}/${blogId}`)
+
+      .then((res) => {
+        console.log(blogId);
+        const data = res.data;
+        setResource(data);
+      })
+      .catch((err) => console.error(err));
+  }, [endpoint, blogId]);
 
   const addResource = useCallback(() => {
     axios
@@ -44,6 +56,8 @@ const useRequestResource = ({ endpoint, body, blogId }) => {
   return {
     resources,
     getResources,
+    getOneResource,
+    resource,
     addResource,
     updateResource,
     deleteResource,
